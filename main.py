@@ -29,6 +29,35 @@ def update_movie(id, name):
   db.commit()
   print("Log Updated")
 
+def add_tv_show():
+  sql = ("INSERT INTO tv_shows(name, genre) VALUES (%s, %s)")
+  cursor.execute(sql, (name, genre))
+  db.commit()
+  tv_shows_id = cursor.lastrowid
+  print("Added movie {}".format(tv_shows_id))
+
+def get_tv_shows():
+  sql = ("SELECT * FROM tv_shows ORDER BY created DESC")
+  cursor.execute(sql)
+  result = cursor.fetchall()
+
+  for row in result:
+    print(row)
+
+def get_tv_show(id):
+  sql = ("SELECT * FROM tv_shows WHERE id = %s")
+  cursor.execute(sql, (id,))
+  result = cursor.fetchone()
+
+  for row in result:
+    print(row)
+
+def update_movie(id, name):
+  sql = ("UPDATE tv_shows SET name = %s WHERE id = %s")
+  cursor.execute(sql, (name, id))
+  db.commit()
+  print("Log Updated")
+
 # add_movie('Pineapple Express', 'Comedy')
 # add_movie('Step Brothers', 'Comedy')
 # add_movie('Dodgeball', 'Comedy')
