@@ -16,6 +16,16 @@ TABLES['movies'] = (
   ") ENGINE=InnoDB"
 )
 
+TABLES['tv_shows'] = (
+  "CREATE TABLE `tv_shows` ("
+  " `id` int(11) NOT NULL AUTO_INCREMENT,"
+  " `name` varchar(250) NOT NULL,"
+  " `genre` varchar(250) NOT NULL,"
+  " `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,"
+  " PRIMARY KEY (`id`)"
+  ") ENGINE=InnoDB"
+)
+
 def create_database():
     cursor.execute("CREATE DATABASE IF NOT EXISTS {} DEFAULT CHARACTER SET 'utf8'".format(DB_NAME))
     print("Database {} created!".format(DB_NAME))
