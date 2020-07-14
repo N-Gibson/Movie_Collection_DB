@@ -23,13 +23,13 @@ def get_movie(id):
   for row in result:
     print(row)
 
-def update_movie(id, name):
-  sql = ("UPDATE movies SET name = %s WHERE id = %s")
-  cursor.execute(sql, (name, id))
+def update_movie(id, name, genre):
+  sql = ("UPDATE movies SET name = %s, genre = %s WHERE id = %s")
+  cursor.execute(sql, (name, genre, id))
   db.commit()
   print("Log Updated")
 
-def add_tv_show():
+def add_tv_show(name, genre):
   sql = ("INSERT INTO tv_shows(name, genre) VALUES (%s, %s)")
   cursor.execute(sql, (name, genre))
   db.commit()
@@ -52,16 +52,8 @@ def get_tv_show(id):
   for row in result:
     print(row)
 
-def update_movie(id, name):
-  sql = ("UPDATE tv_shows SET name = %s WHERE id = %s")
-  cursor.execute(sql, (name, id))
+def update_tv_show(id, name, genre):
+  sql = ("UPDATE tv_shows SET name = %s, genre = %s WHERE id = %s")
+  cursor.execute(sql, (name, genre, id))
   db.commit()
   print("Log Updated")
-
-# add_movie('Pineapple Express', 'Comedy')
-# add_movie('Step Brothers', 'Comedy')
-# add_movie('Dodgeball', 'Comedy')
-
-# get_movies()
-get_movie(2)
-# update_movie(2, 'This is the End')
